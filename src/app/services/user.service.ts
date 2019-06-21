@@ -17,14 +17,7 @@ export class UserService {
     }
 
     login(user: string) {
-//        let params = "json=" + JSON.stringify(user);
-//        let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
         let headers = new Headers({'Content-Type': "application/json"});
-//        let data = {
-//            'email': 'asd',
-//            'password': 123
-//        };
-//        console.table(user);
 
         return this._http
             .post(this.url + '/login', user, {headers: headers})
@@ -32,8 +25,6 @@ export class UserService {
     }
 
     register(user) {
-//        let params = "json=" + JSON.stringify(user);
-//        let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         let headers = new Headers({'Content-Type': "application/json"});
 
         return this._http

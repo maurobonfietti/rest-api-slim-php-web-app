@@ -87,11 +87,6 @@
                             <a class="task" [routerLink]="['task-edit', task.id]" *ngIf="task.status == 0">{{task.name | slice:0:100}} {{task.name.length > 100 ? '[...]' : ''}}</a>
                         </h4>
                     </td>
-<!--                    <td>
-                        <h4>
-                            <a class="task">{{task.id}} | {{task.name}}</a>
-                        </h4>
-                    </td>-->
                     <td>
                         <button mat-icon-button [matMenuTriggerFor]="menu">
                             <mat-icon>more_vert</mat-icon>

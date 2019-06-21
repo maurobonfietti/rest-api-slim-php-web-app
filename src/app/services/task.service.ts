@@ -17,11 +17,9 @@ export class TaskService {
     }
 
     create(token, task): Observable<any> {
-//        let params = "json=" + JSON.stringify(task);
-//        let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         let headers = new Headers({'Content-Type': "application/json"});
         headers.append('Authorization', token);
-        console.log(task);
+//        console.log(task);
 
         return this._http
             .post(this.url + '/api/v1/tasks', task, {headers: headers})
@@ -37,7 +35,6 @@ export class TaskService {
     search(token, search = null, filter = null, order = null, priority = null, page = null) {
         let url: string;
         let params = '&filter=' + filter + '&order=' + order + '&priority=' + priority;
-//        let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         let headers = new Headers({'Content-Type': "application/json"});
         console.log(token);
         headers.append('Authorization', token);
@@ -95,7 +92,6 @@ export class TaskService {
     }
 
     deleteTask(token, id) {
-//        let headers = new Headers({'Authorization': token});
         let headers = new Headers({'Content-Type': "application/json"});
         headers.append('Authorization', token);
 

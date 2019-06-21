@@ -1,0 +1,136 @@
+<div class="col-md-12">
+    <div *ngIf="!identity || identity == null">
+        <legend>Inicia sesión para acceder a más opciones.</legend>
+    </div>
+    <div class="col-md-12" *ngIf="identity && identity.sub">
+        <form class="col-md-12">
+            <div class="col-md-4">
+                <mat-form-field>
+                    <mat-select placeholder="Filtrar" name="filter" [(ngModel)]="filter" (change)="search()">
+                        <mat-option [value]="0">Todas las tareas</mat-option>
+                        <mat-option [value]="2">Tareas pendientes</mat-option>
+                        <mat-option [value]="3">Tareas finalizadas</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field>
+                    <mat-select placeholder="Mostrar" name="priority" [(ngModel)]="priority" (change)="search()">
+                        <mat-option [value]="2">Todas las tareas</mat-option>
+                        <mat-option [value]="1">Sólo tareas prioritarias</mat-option>
+                        <mat-option [value]="0">Sólo tareas baja prioridad</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field>
+                    <mat-select placeholder="Ordenar por" name="order" [(ngModel)]="order" (change)="search()">
+                        <mat-option [value]="1">Fecha creación ascendente</mat-option>
+                        <mat-option [value]="2">Fecha creación descendente</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-11">
+                <mat-form-field class="full-width">
+                    <input matInput matTooltip="Ingresa una descripcion de la tarea que estas buscando" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()">
+                </mat-form-field>
+            </div>
+            <div class="col-md-1">
+                <button class="mdl-button mdl-js-button mdl-button--icon" (click)="search()">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
+        </form>
+        <form class="col-md-12">
+            <div class="clearfix"></div>
+            <div class="col-md-11">
+                <mat-form-field class="full-width">
+                    <input matInput matTooltip="Ingresa el nombre de la tarea que quieres crear" placeholder="Crear una tarea nueva..." name="name" [(ngModel)]="task.name">
+                </mat-form-field>
+            </div>
+            <div class="col-md-1">
+                <button class="mdl-button mdl-js-button mdl-button--icon" (click)="createTask()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </form>
+        <div class="all-tasks">
+            <table class="table table-hover table-stripped" id="tasks-list" *ngIf="tasks && tasks.length > 0">
+                <tr class="task-item" *ngFor="let task of tasks">
+                    <td>
+                        <h4>
+                            <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id)"></mat-checkbox>
+                        </h4>
+                    </td>
+                    <td>
+                        <h4>
+                            <span class='label lg-label label-success' *ngIf="task.status == 'finished'">
+                                Finalizada
+                            </span>
+                            <span class='label lg-label label-warning' *ngIf="task.status == 'todo'">
+                                Pendiente
+                            </span>
+                        </h4>
+                    </td>
+                    <td>
+                        <button mat-icon-button color="warn" (click)="updatePriority(task.id)" *ngIf="task.priority == true">
+                            <mat-icon>star</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="updatePriority(task.id)" *ngIf="task.priority != true">
+                            <mat-icon>star_border</mat-icon>
+                        </button>
+                    </td>
+                    <td>
+                        <h4>
+                            <a class="task strike-through" [routerLink]="['task-edit', task.id]" *ngIf="task.status == 1">{{task.name | slice:0:100}} {{task.name.length > 100 ? '[...]' : ''}}</a>
+                            <a class="task" [routerLink]="['task-edit', task.id]" *ngIf="task.status == 0">{{task.name | slice:0:100}} {{task.name.length > 100 ? '[...]' : ''}}</a>
+                        </h4>
+                    </td>
+<!--                    <td>
+                        <h4>
+                            <a class="task">{{task.id}} | {{task.name}}</a>
+                        </h4>
+                    </td>-->
+                    <td>
+                        <button mat-icon-button [matMenuTriggerFor]="menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item [routerLink]="['task-edit', task.id]">
+                                <mat-icon>mode_edit</mat-icon>
+                                <span>Editar</span>
+                            </button>
+                            <button mat-menu-item (click)="openDialog(task.id)">
+                                <mat-icon>delete_forever</mat-icon>
+                                <span>Eliminar</span>
+                            </button>
+                        </mat-menu>
+                    </td>
+                </tr>
+            </table>
+            <div class='col-md-12' *ngIf="loading == 'hide' && (!tasks || tasks.length == 0)">
+                <mat-chip-list>
+                    <mat-chip color="primary" selected="true">No se han encontrado tareas</mat-chip>
+                </mat-chip-list>
+            </div>
+            <ul class="pagination" *ngIf="tasks && totalItemsCount > 100" >
+                <li>
+                    <a [routerLink]="['/index', pagesPrev]" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li *ngFor="let page of pages" >
+                    <a [routerLink]="['/index', page+1]">
+                        {{page+1}}
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/index', pagesNext]" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

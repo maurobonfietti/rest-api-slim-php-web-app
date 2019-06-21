@@ -1,0 +1,36 @@
+<div class="col-md-12">
+    <div class="loader" *ngIf="loading == 'show'">
+        <img src='assets/img/loader.gif' />
+    </div>
+    <div class="col-md-12" *ngIf="task">
+         <legend>{{page_title}}</legend>
+        <div class="alert alert-success" *ngIf="status_task == 'success'">
+            Tarea creada correctamente.
+        </div>
+        <div class="alert alert-danger" *ngIf="status_task == 'error'">
+            Error al crear la tarea.
+        </div>
+        <form #taskNewForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7 no-padding">
+            <mat-form-field class="full-width">
+                <input matInput matTooltip="El nombre de la tarea" placeholder="Nombre de la tarea" name="name" #name="ngModel" [(ngModel)]="task.name" required autofocus>
+                <mat-error *ngIf="!name.valid && name.touched">
+                    El nombre es <strong>requerido</strong>.
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <br />
+            <mat-form-field class="full-width">
+                <textarea matInput matTextareaAutosize matTooltip="Descripcion adicional sobre la tarea" placeholder="Notas adicionales" name="description" #description="ngModel" [(ngModel)]="task.description"></textarea>
+            </mat-form-field>
+            <br />
+            <br />
+            <mat-slide-toggle color="warn" name="priority" #priority="ngModel" [(ngModel)]="task.priority">Tarea Prioritaria</mat-slide-toggle>
+            <br />
+            <br />
+            <br />
+            <button mat-raised-button color="primary" matTooltip="Presiona aquí para guardar la tarea" [disabled]="!taskNewForm.form.valid">{{btn_title}}</button>
+            &nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="warn" matTooltip="Presiona aquí para borrar la tarea" *ngIf='task.id != 0' (click)="deleteTask(task.id)">BORRAR</button>
+        </form>
+    </div>
+</div>

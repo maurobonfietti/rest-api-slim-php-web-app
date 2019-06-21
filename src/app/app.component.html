@@ -1,0 +1,43 @@
+<div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+    <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+            <a class="task" [routerLink]="['']">
+                <img src='assets/img/todo.png' height="36" width="36" />
+            </a>
+            &nbsp;&nbsp;
+            <button class="mat-raised-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" [routerLink]="['/index/1']" *ngIf="identity && identity.sub">
+                <i class="material-icons">done_all</i> Mis Tareas
+            </button>
+            &nbsp;&nbsp;
+            <button id="view-source" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary" [routerLink]="['/task-new']" *ngIf="identity && identity.sub">
+                <i class="material-icons">add</i>
+            </button>
+            <button class="mat-raised-button mdl-button mdl-js-button mdl-button--primary" [routerLink]="['/task-new']" *ngIf="identity && identity.sub">
+                Crear tarea
+            </button>
+            <div class="mdl-layout-spacer"></div>
+<!--            <button class="mdl-button mdl-js-button mdl-button--primary" [routerLink]="['/user-edit']" *ngIf="identity && identity.sub">
+                Mis datos
+            </button>-->
+            <button class="mat-raised-button mdl-button mdl-js-button mdl-button--primary" [routerLink]="['/login/1']" *ngIf="identity && identity.sub">
+                Salir
+            </button>
+            <button class="mat-raised-button mdl-button mdl-js-button mdl-button--primary" [routerLink]="['/login']" *ngIf="!identity">
+                Acceder
+            </button>
+            &nbsp;&nbsp;
+            <button class="mat-raised-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" [routerLink]="['/register']" *ngIf="!identity">
+                Registrar
+            </button>
+        </div>
+    </header>
+    <div class="demo-ribbon"></div>
+    <main class="demo-main mdl-layout__content">
+        <div class="demo-container mdl-grid">
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+            <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </main>
+</div>

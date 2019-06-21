@@ -1,0 +1,45 @@
+<div class="col-md-12">
+    <legend>{{title}}</legend>
+    <div class="alert alert-success" *ngIf="status == 'success'">
+        ¡Te has registrado correctamente!
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+        Error en la registración. No te has registrado correctamente.
+    </div>
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit();" class="col-md-7 no-padding">
+        <mat-form-field class="full-width">
+            <input matInput matTooltip="Ingresa tu nombre" placeholder="Tu nombre" name="name" #name="ngModel" [(ngModel)]="user.name" required>
+            <mat-error *ngIf="!name.valid && name.touched">
+                El nombre es <strong>requerido</strong>.
+            </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="full-width">
+            <input matInput matTooltip="Ingresa tu apellido" placeholder="Tu apellido" name="surname" #surname="ngModel" [(ngModel)]="user.surname" required>
+            <mat-error *ngIf="!surname.valid && surname.touched">
+                El apellido es <strong>requerido</strong>.
+            </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="full-width">
+            <input matInput matTooltip="Ingresa tu dirección de email" placeholder="Tu email" name="email" [(ngModel)]="user.email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" required>
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Ingrese un email válido.
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                El email es <strong>requerido</strong>.
+            </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="full-width">
+            <input matInput  matTooltip="Ingresa tu contraseña" placeholder="Tu contraseña" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required>
+            <mat-error *ngIf="!password.valid && password.touched">
+                La contraseña es <strong>requerida</strong>.
+            </mat-error>
+        </mat-form-field>
+        <br />
+        <br />
+        <button class="mat-raised-button mdl-button mdl-js-button mdl-button--primary" mat-raised-button color="primary" matTooltip="Presiona aquí para registrarte" [disabled]="!registerForm.form.valid || emailFormControl.hasError('email')">Registrarme</button>
+    </form>
+</div>
+

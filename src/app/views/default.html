@@ -4,7 +4,7 @@
     </div>
     <div class="col-md-12" *ngIf="identity && identity.sub">
         <form class="col-md-12">
-            <div class="col-md-4">
+<!--            <div class="col-md-4">
                 <mat-form-field>
                     <mat-select placeholder="Filtrar" name="filter" [(ngModel)]="filter" (change)="search()">
                         <mat-option [value]="0">Todas las tareas</mat-option>
@@ -30,7 +30,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="clearfix"></div>
+            <div class="clearfix"></div>-->
             <div class="col-md-11">
                 <mat-form-field class="full-width">
                     <input matInput matTooltip="Ingresa una descripcion de la tarea que estas buscando" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()">
@@ -60,27 +60,27 @@
                 <tr class="task-item" *ngFor="let task of tasks">
                     <td>
                         <h4>
-                            <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id)"></mat-checkbox>
+                            <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id, task)"></mat-checkbox>
                         </h4>
                     </td>
                     <td>
                         <h4>
-                            <span class='label lg-label label-success' *ngIf="task.status == 'finished'">
+                            <span class='label lg-label label-success' *ngIf="task.status == 1">
                                 Finalizada
                             </span>
-                            <span class='label lg-label label-warning' *ngIf="task.status == 'todo'">
+                            <span class='label lg-label label-warning' *ngIf="task.status == 0">
                                 Pendiente
                             </span>
                         </h4>
                     </td>
-                    <td>
+<!--                    <td>
                         <button mat-icon-button color="warn" (click)="updatePriority(task.id)" *ngIf="task.priority == true">
                             <mat-icon>star</mat-icon>
                         </button>
                         <button mat-icon-button color="warn" (click)="updatePriority(task.id)" *ngIf="task.priority != true">
                             <mat-icon>star_border</mat-icon>
                         </button>
-                    </td>
+                    </td>-->
                     <td>
                         <h4>
                             <a class="task strike-through" [routerLink]="['task-edit', task.id]" *ngIf="task.status == 1">{{task.name | slice:0:100}} {{task.name.length > 100 ? '[...]' : ''}}</a>

@@ -52,10 +52,11 @@ export class TaskEditComponent implements OnInit {
             let id = +params['id'];
             this._taskService.getTask(this.token, id).subscribe(
                 response => {
-                    if (response.task.user.id !== this.identity.sub) {
-                        this._router.navigate(['/index/1']);
-                    }
-                    this.task = response.task;
+//                    if (response.task.user.id !== this.identity.sub) {
+//                        this._router.navigate(['/index/1']);
+//                    }
+//                    console.log(response);
+                    this.task = response.message;
                     this.loading = 'hide';
                 },
                 error => {

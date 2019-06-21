@@ -132,8 +132,8 @@ export class DefaultComponent implements OnInit {
         });
     }
 
-    updateStatus(id: string) {
-        this._taskService.updateStatus(this.token, id).subscribe(
+    updateStatus(id: string, task: Task) {
+        this._taskService.updateStatus(this.token, id, task).subscribe(
             response => {
                 this.playSound();
                 this.search();

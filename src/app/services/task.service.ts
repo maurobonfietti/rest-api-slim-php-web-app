@@ -33,12 +33,12 @@ export class TaskService {
 
     search(token, search = null, filter = null, order = null, priority = null, page = null) {
         let url: string;
-        let params = '&filter=' + filter + '&order=' + order + '&priority=' + priority;
+        let params = 'status=' + filter + '&order=' + order + '&priority=' + priority;
         let headers = new Headers({'Content-Type': "application/json"});
         headers.append('Authorization', token);
 
         if (search === null) {
-            url = this.url + '/api/v1/tasks';
+            url = this.url + '/api/v1/tasks/search/';
         } else {
             url = this.url + '/api/v1/tasks/search/' + search;
         }

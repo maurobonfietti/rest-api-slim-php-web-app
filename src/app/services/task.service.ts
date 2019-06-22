@@ -35,20 +35,13 @@ export class TaskService {
         let url: string;
         let params = '&filter=' + filter + '&order=' + order + '&priority=' + priority;
         let headers = new Headers({'Content-Type': "application/json"});
-//        console.log(token);
         headers.append('Authorization', token);
 
-        if (page === null) {
-            page = 1;
-        }
         if (search === null) {
-//            url = this.url + '/task/search?page=' + page;
             url = this.url + '/api/v1/tasks';
         } else {
-//            url = this.url + '/task/search/' + search + '?page=' + page;
             url = this.url + '/api/v1/tasks/search/' + search;
         }
-//        url = this.url + '/api/v1/tasks' + '?page=' + page;
 
         return this._http
             .get(url + '?' + params, {headers: headers})

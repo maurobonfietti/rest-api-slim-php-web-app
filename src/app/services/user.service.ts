@@ -13,7 +13,7 @@ export class UserService {
 
     constructor(private _http: Http) {
         this.url = environment.apiUrl;
-        console.log('Prod: ' + environment.production + '. Url: ' + this.url);
+//        console.log('Prod: ' + environment.production + '. Url: ' + this.url);
     }
 
     login(user: string) {

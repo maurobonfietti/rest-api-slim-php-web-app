@@ -41,13 +41,14 @@ export class TaskService {
         if (page === null) {
             page = 1;
         }
-//        if (search === null) {
+        if (search === null) {
 //            url = this.url + '/task/search?page=' + page;
-//        } else {
+            url = this.url + '/api/v1/tasks';
+        } else {
 //            url = this.url + '/task/search/' + search + '?page=' + page;
-//        }
-
-        url = this.url + '/api/v1/tasks' + '?page=' + page;
+            url = this.url + '/api/v1/tasks/search/' + search;
+        }
+//        url = this.url + '/api/v1/tasks' + '?page=' + page;
 
         return this._http
             .get(url + '?' + params, {headers: headers})

@@ -4,7 +4,7 @@
     </div>
     <div class="col-md-12" *ngIf="identity && identity.sub">
         <form class="col-md-12">
-            <div class="col-md-4">
+<!--            <div class="col-md-4">
                 <mat-form-field>
                     <mat-select placeholder="Filtrar" name="filter" [(ngModel)]="filter" (change)="search()">
                         <mat-option [value]="2">Todas las tareas</mat-option>
@@ -12,7 +12,7 @@
                         <mat-option [value]="1">Tareas finalizadas</mat-option>
                     </mat-select>
                 </mat-form-field>
-            </div>
+            </div>-->
 <!--            <div class="col-md-4">
                 <mat-form-field>
                     <mat-select placeholder="Mostrar" name="priority" [(ngModel)]="priority" (change)="search()">
@@ -31,9 +31,18 @@
                 </mat-form-field>
             </div>-->
             <div class="clearfix"></div>
-            <div class="col-md-11">
+            <div class="col-md-4">
+                <mat-form-field>
+                    <mat-select placeholder="Filtrar" name="filter" [(ngModel)]="filter" (change)="search()">
+                        <mat-option [value]="2">Todas las tareas</mat-option>
+                        <mat-option [value]="0">Tareas pendientes</mat-option>
+                        <mat-option [value]="1">Tareas finalizadas</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-7">
                 <mat-form-field class="full-width">
-                    <input matInput matTooltip="Ingresa una descripcion de la tarea que estas buscando" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()">
+                    <input matInput matTooltip="Escribe la tarea que estas buscando" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()">
                 </mat-form-field>
             </div>
             <div class="col-md-1">

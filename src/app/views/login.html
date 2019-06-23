@@ -2,23 +2,23 @@
     <legend>{{title}}</legend>
     <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7 no-padding">
         <mat-form-field class="full-width">
-            <input id="username" matInput matTooltip="Ingresa tu dirección de email" placeholder="Tu email" name="email" [(ngModel)]="user.email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" required>
+            <input id="username" matInput matTooltip="Enter your email address" placeholder="Your email" name="email" [(ngModel)]="user.email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" required>
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                Ingrese un email válido.
+                Enter a valid email.
             </mat-error>
             <mat-error *ngIf="emailFormControl.hasError('required')">
-                El email es <strong>requerido</strong>.
+                The email is <strong>required</strong>.
             </mat-error>
         </mat-form-field>
         <br />
         <mat-form-field class="full-width">
-            <input id="userpass" matInput  matTooltip="Ingresa tu contraseña" placeholder="Tu contraseña" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required>
+            <input id="userpass" matInput  matTooltip="Enter your password" placeholder="Your password" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required>
             <mat-error *ngIf="!password.valid && password.touched">
-                La contraseña es <strong>requerida</strong>.
+                The password is <strong>required</strong>.
             </mat-error>
         </mat-form-field>
         <br />
         <br />
-        <button id="btn-login" class="mat-raised-button mdl-button mdl-js-button mdl-button--primary" mat-raised-button color="primary" matTooltip="Presiona aquí para iniciar sesión">Entrar</button>
+        <button id="btn-login" class="mat-raised-button mdl-button mdl-js-button mdl-button--primary" mat-raised-button color="primary" matTooltip="Click here to log in">Get in</button>
     </form>
 </div>

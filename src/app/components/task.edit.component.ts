@@ -26,8 +26,8 @@ export class TaskEditComponent implements OnInit {
         private _taskService: TaskService,
         public snackBar: MatSnackBar
     ) {
-        this.page_title = 'EDITAR TAREA';
-        this.btn_title = 'GUARDAR';
+        this.page_title = 'EDIT TASK';
+        this.btn_title = 'SAVE';
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
     }

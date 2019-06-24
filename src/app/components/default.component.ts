@@ -77,13 +77,13 @@ export class DefaultComponent implements OnInit {
     createTask() {
         this._taskService.create(this.token, this.task).subscribe(
             response => {
-                this.openSnackBar('Tarea creada exitosamente.');
+                this.openSnackBar('Task created successfully.');
                 this.task = new Task(0, '', '', 0, 'null', 'null');
                 this.search();
             },
             error => {
                 console.log(<any> error);
-                this.openSnackBar('¡Ups! Ocurrió un error al crear la tarea.');
+                this.openSnackBar('Oops! There was an error creating the task.');
             }
         );
     }
@@ -169,7 +169,7 @@ export class DefaultComponent implements OnInit {
     deleteTask(id: string) {
         this._taskService.deleteTask(this.token, id).subscribe(
             response => {
-                this.openSnackBar('Tarea eliminada exitosamente.');
+                this.openSnackBar('Task deleted successfully.');
                 this.search();
             },
             error => {

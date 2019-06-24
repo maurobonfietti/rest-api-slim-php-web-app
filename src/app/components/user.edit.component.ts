@@ -36,7 +36,7 @@ export class UserEditComponent implements OnInit {
         private _router: Router,
         private _userService: UserService
     ) {
-        this.title = 'Editar mis datos';
+        this.title = 'Edit my data';
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
     }

@@ -61,7 +61,7 @@ export class TaskEditComponent implements OnInit {
                 },
                 error => {
                     console.log(<any> error);
-                    this.openSnackBar('¡Ups! Ocurrió un error al cargar la tarea.');
+                    this.openSnackBar('Oops! There was an error loading the task.');
                 }
             );
         });
@@ -77,7 +77,7 @@ export class TaskEditComponent implements OnInit {
                 },
                 error => {
                     console.log(<any> error);
-                    this.openSnackBar('¡Ups! Ocurrió un error al guardar la tarea.');
+                    this.openSnackBar('Oops! An error occurred while saving the task.');
                 }
             );
         });
@@ -86,7 +86,7 @@ export class TaskEditComponent implements OnInit {
     deleteTask(id: string) {
         this._taskService.deleteTask(this.token, id).subscribe(
             response => {
-                this.openSnackBar('Tarea eliminada exitosamente.');
+                this.openSnackBar('Task deleted successfully.');
                 this._router.navigate(['/index/1']);
             },
             error => {

@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
             },
             error => {
                 console.log(<any> error);
-                this.openSnackBar('El email y contraseña ingresados son incorrectos.');
+                this.openSnackBar('The email and password entered are incorrect.');
             }
         );
     }

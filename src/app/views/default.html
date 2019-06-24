@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <div *ngIf="!identity || identity == null">
-        <legend>Inicia sesión para acceder a más opciones.</legend>
+        <legend>Sign in to access more options.</legend>
     </div>
     <div class="col-md-12" *ngIf="identity && identity.sub">
         <form class="col-md-12">
@@ -33,16 +33,16 @@
             <div class="clearfix"></div>
             <div class="col-md-4">
                 <mat-form-field>
-                    <mat-select placeholder="Filtrar" name="filter" [(ngModel)]="filter" (change)="search()">
-                        <mat-option [value]="2">Todas las tareas</mat-option>
-                        <mat-option [value]="0">Tareas pendientes</mat-option>
-                        <mat-option [value]="1">Tareas finalizadas</mat-option>
+                    <mat-select placeholder="Filter" name="filter" [(ngModel)]="filter" (change)="search()">
+                        <mat-option [value]="2">All tasks</mat-option>
+                        <mat-option [value]="0">Pending tasks</mat-option>
+                        <mat-option [value]="1">Completed tasks</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-md-7">
                 <mat-form-field class="full-width">
-                    <input matInput matTooltip="Escribe la tarea que estas buscando" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()">
+                    <input matInput matTooltip="Write the task you are looking for" placeholder="What task are you looking for?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()">
                 </mat-form-field>
             </div>
             <div class="col-md-1">
@@ -55,7 +55,7 @@
             <div class="clearfix"></div>
             <div class="col-md-11">
                 <mat-form-field class="full-width">
-                    <input matInput matTooltip="Ingresa el nombre de la tarea que quieres crear" placeholder="Crear una tarea nueva..." name="name" [(ngModel)]="task.name">
+                    <input matInput matTooltip="Enter the name of the task you want to create" placeholder="Create a new task..." name="name" [(ngModel)]="task.name">
                 </mat-form-field>
             </div>
             <div class="col-md-1">
@@ -75,10 +75,10 @@
                     <td>
                         <h4>
                             <span class='label lg-label label-success' *ngIf="task.status == 1">
-                                Finalizada
+                                Completed
                             </span>
                             <span class='label lg-label label-warning' *ngIf="task.status == 0">
-                                Pendiente
+                                Pending
                             </span>
                         </h4>
                     </td>
@@ -103,11 +103,11 @@
                         <mat-menu #menu="matMenu">
                             <button mat-menu-item [routerLink]="['task-edit', task.id]">
                                 <mat-icon>mode_edit</mat-icon>
-                                <span>Editar</span>
+                                <span>Edit</span>
                             </button>
                             <button mat-menu-item (click)="openDialog(task.id)">
                                 <mat-icon>delete_forever</mat-icon>
-                                <span>Eliminar</span>
+                                <span>Delete</span>
                             </button>
                         </mat-menu>
                     </td>
@@ -115,7 +115,7 @@
             </table>
             <div class='col-md-12' *ngIf="loading == 'hide' && (!tasks || tasks.length == 0)">
                 <mat-chip-list>
-                    <mat-chip color="primary" selected="true">No se han encontrado tareas</mat-chip>
+                    <mat-chip color="primary" selected="true">No tasks found</mat-chip>
                 </mat-chip-list>
             </div>
             <ul class="pagination" *ngIf="tasks && totalItemsCount > 100" >

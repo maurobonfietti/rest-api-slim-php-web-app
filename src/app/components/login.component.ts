@@ -79,27 +79,12 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         this._userService.login(this.user).subscribe(
             response => {
-//                console.log(response.message.Authorization);
                 this.identity = response.message.Authorization;
                 localStorage.setItem('identity', JSON.stringify(this.identity));
-                //
                 this.token = response.message.Authorization;
                 localStorage.setItem('token', JSON.stringify(this.token));
                 this.openSnackBar('¡Te has identificado correctamente!');
                 window.location.href = '/index/1';
-                //
-//                this.user.getData = false;
-//                this._userService.login(this.user).subscribe(
-//                    response => {
-//                        this.token = response;
-//                        localStorage.setItem('token', JSON.stringify(this.token));
-//                        this.openSnackBar('¡Te has identificado correctamente!');
-//                        window.location.href = '/index/1';
-//                    },
-//                    error => {
-//                        console.log(<any> error);
-//                    }
-//                );
             },
             error => {
                 console.log(<any> error);

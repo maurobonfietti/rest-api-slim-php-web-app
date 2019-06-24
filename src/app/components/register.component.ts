@@ -85,27 +85,10 @@ export class RegisterComponent implements OnInit {
                     response => {
                         this.identity = response.message.Authorization;
                         localStorage.setItem('identity', JSON.stringify(this.identity));
-                        //
                         this.token = response.message.Authorization;
                         localStorage.setItem('token', JSON.stringify(this.token));
-//                        this.openSnackBar('¡Te has identificado correctamente!');
                         this.openSnackBarOk();
                         window.location.href = '/index/1';
-                        //
-//                        this.identity = response;
-//                        localStorage.setItem('identity', JSON.stringify(this.identity));
-//                        this.user.getData = false;
-//                        this._userService.login(this.user).subscribe(
-//                            response => {
-//                                this.token = response;
-//                                localStorage.setItem('token', JSON.stringify(this.token));
-//                                this.openSnackBarOk();
-//                                window.location.href = '/index/1';
-//                            },
-//                            error => {
-//                                console.log(<any> error);
-//                            }
-//                        );
                     },
                     error => {
                         console.log(<any> error);

@@ -73,7 +73,7 @@ export class TaskEditComponent implements OnInit {
             this._taskService.update(this.token, this.task, id).subscribe(
                 response => {
                     this.task = response.data;
-                    this._router.navigate(['/index/1']);
+                    this._router.navigate(['']);
                 },
                 error => {
                     console.log(<any> error);
@@ -87,7 +87,7 @@ export class TaskEditComponent implements OnInit {
         this._taskService.deleteTask(this.token, id).subscribe(
             response => {
                 this.openSnackBar('Task deleted successfully.');
-                this._router.navigate(['/index/1']);
+                this._router.navigate(['']);
             },
             error => {
                 console.log(<any> error);

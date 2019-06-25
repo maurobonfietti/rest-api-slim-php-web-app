@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
     redirectIfIdentity() {
         let identity = this._userService.getIdentity();
         if (identity != null && identity.sub) {
-            this._router.navigate(['/index/1']);
+            this._router.navigate(['']);
         }
     }
 
@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
                 this.token = response.message.Authorization;
                 localStorage.setItem('token', JSON.stringify(this.token));
                 this.openSnackBar('¡Te has identificado correctamente!');
-                window.location.href = '/index/1';
+                window.location.href = '';
             },
             error => {
                 console.log(<any> error);

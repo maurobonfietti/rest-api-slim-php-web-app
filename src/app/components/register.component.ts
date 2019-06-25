@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
                         this.token = response.message.Authorization;
                         localStorage.setItem('token', JSON.stringify(this.token));
                         this.openSnackBarOk();
-                        window.location.href = '/index/1';
+                        window.location.href = '';
                     },
                     error => {
                         console.log(<any> error);

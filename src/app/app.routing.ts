@@ -10,15 +10,12 @@ import {TaskEditComponent} from './components/task.edit.component';
 
 const appRoutes: Routes = [
     {path: '', component: DefaultComponent},
-//    {path: 'index', component: DefaultComponent},
-//    {path: 'index/:page', component: DefaultComponent},
     {path: 'login', component: LoginComponent},
     {path: 'login/:id', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'user-edit', component: UserEditComponent},
     {path: 'task-new', component: TaskNewComponent},
     {path: 'task-edit/:id', component: TaskEditComponent},
-//    {path: 'index/:page/task-edit/:id', component: TaskEditComponent},
     {path: '**', component: LoginComponent}
 ];
 

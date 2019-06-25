@@ -32,7 +32,7 @@ export class DefaultComponent implements OnInit {
     public loading = 'show';
     public task: Task;
     public priority = 2;
-    public filter = 2;
+    public filter = 0;
     public order = 1;
     public searchString: string;
     public totalItemsCount = 0;

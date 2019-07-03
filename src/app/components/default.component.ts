@@ -120,11 +120,12 @@ export class DefaultComponent implements OnInit {
                 },
                 error => {
                     console.log(<any> error);
+//                    console.log(error);
 //                    console.log(error.status);
 //                    console.log(error.statusText);
-                    if (error.status === 403 && error.statusText === 'Forbidden' ) {
+//                    if (error.status === 403 && error.statusText === 'Forbidden' ) {
                         this._router.navigate(['/login/1']);
-                    }
+//                    }
                 }
             );
         });

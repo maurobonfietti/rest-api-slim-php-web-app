@@ -13,9 +13,7 @@ This is another To-Do List web app ;-)
 
 ``` bash
 npm install
-npm start
-# or npm run local
-# or ng serve
+npm run local
 ```
 
 
@@ -23,4 +21,6 @@ npm start
 
 **[WIP] Work In Progress.**
 
-Working on new version :-)
+[Previous Version](https://github.com/maurobonfietti/todo-list-front).
+
+Now working on a new version :-)

@@ -21,6 +21,6 @@ npm run local
 
 **[WIP] Work In Progress.**
 
-[Previous Version](https://github.com/maurobonfietti/todo-list-front).
+I'm working on a new version. Coming soon, new UI (depending on my free time and family).
 
-Now working on a new version :-)
+[Check Previous Version](https://github.com/maurobonfietti/todo-list-front).

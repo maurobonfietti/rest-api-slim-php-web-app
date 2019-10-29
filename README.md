@@ -1,11 +1,11 @@
 # ToDo List:
 
-This is another To-Do List web app, for do amazing stuff ;-)
+This is another To-Do List web app ;-)
 
 ## Application Stack:
 
-* Frontend: Angular 4 + Angular Material Design.
-* Backend: Slim PHP microframework + MySQL DB. [Go to repository](https://github.com/maurobonfietti/rest-api-slim-php).
+* Frontend: Angular 4 + Material Design.
+* Backend: Slim PHP + MySQL DB. [Go to repository](https://github.com/maurobonfietti/rest-api-slim-php).
 
 
 ## Execute Commands:
@@ -18,4 +18,6 @@ npm start
 ```
 
 
-### WorkInProgress :-)
+### Status: WIP
+
+Working on new version :-)
